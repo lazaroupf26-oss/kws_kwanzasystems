@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KWS - Kwanza Systems | Serviços de TI Especializados</title>
+    <link rel="icon" href="img/KWS.png" width="100" type="image/jpg">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta de cores da identidade visual KWS */
+            --primary-green: #1E7F5C;     /* Verde tecnológico (primário) */
+            --secondary-blue: #0F2A44;    /* Azul escuro tecnológico (secundário) */
+            --accent-teal: #2A9D8F;       /* Verde-azulado para destaques */
+            --light-blue: #3A86FF;        /* Azul mais claro para elementos interativos */
+            --white: #FFFFFF;
+            --light-gray: #F2F2F2;
+            --medium-gray: #E0E0E0;
+            --dark-gray: #333333;
+            --text-dark: #1A1A1A;
+            --text-light: #666666;
+            
+            /* Gradientes */
+            --gradient-primary: linear-gradient(135deg, var(--primary-green), #2A9D8F);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary-blue), #1E3A5F);
+            --gradient-tech: linear-gradient(135deg, var(--primary-green), var(--secondary-blue));
+            
+            /* Sombras */
+            --shadow: 0 8px 24px rgba(15, 42, 68, 0.12);
+            --shadow-light: 0 4px 12px rgba(15, 42, 68, 0.08);
+            --shadow-hover: 0 12px 32px rgba(15, 42, 68, 0.16);
+            
+            /* Bordas */
+            --border-radius: 12px;
+            --border-radius-sm: 8px;
+            --border-radius-lg: 16px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--secondary-blue);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+        
+        .logo-icon {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-tech);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            background-color: var(--accent-teal);
+            bottom: 0;
+            left: 0;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+        
+        .logo-icon span {
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-kws {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: var(--gradient-tech);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-kwanza {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--secondary-blue);
+            letter-spacing: 0.5px;
+            margin-top: 3px;
+        }
+        
+        /* Navegação - Simplificada */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--secondary-blue);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        nav a:hover {
+            color: var(--primary-green);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+            border-radius: 2px;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section com imagem melhorada */
+        .hero {
+            background: linear-gradient(rgba(15, 42, 68, 0.92), rgba(30, 127, 92, 0.88)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 180px 0 100px;
+            text-align: center;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(42, 157, 143, 0.3) 0%, transparent 50%);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 34px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: var(--shadow-light);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* Services Section - Foco Principal */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-primary);
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 25px auto 0;
+            font-weight: 400;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.4s;
+            height: 100%;
+            border: 1px solid var(--medium-gray);
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-green);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .service-image {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            padding: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            color: var(--secondary-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-content h3 i {
+            color: var(--primary-green);
+        }
+        
+        .service-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-features li i {
+            color: var(--primary-green);
+            font-size: 0.9rem;
+        }
+        
+        /* Why Us Section */
+        .why-us {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 35px 25px;
+            border-radius: var(--border-radius);
+            background-color: var(--white);
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .feature:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-green);
+        }
+        
+        .feature i {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        /* Contact Section com imagem de fundo */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(rgba(15, 42, 68, 0.92), rgba(30, 127, 92, 0.88)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(42, 157, 143, 0.3) 0%, transparent 50%);
+        }
+        
+        .contact .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact .section-title h2,
+        .contact .section-title p,
+        .contact h2,
+        .contact p,
+        .contact .contact-details h3,
+        .contact .contact-details a,
+        .contact .contact-details p,
+        .contact .form-group label {
+            color: var(--white);
+        }
+        
+        .contact .contact-details a {
+            color: var(--accent-teal);
+        }
+        
+        .contact .contact-details a:hover {
+            color: var(--light-blue);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            background: var(--gradient-primary);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-light);
+        }
+        
+        .contact-details h3 {
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+        
+        .contact-details a {
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .contact-details a:hover {
+            color: var(--light-blue);
+            text-decoration: underline;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-green);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(30, 127, 92, 0.3);
+            background-color: var(--white);
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-email {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+        }
+        
+        .btn-email:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gradient-secondary);
+            color: var(--white);
+            padding: 70px 0 25px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient-primary);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-sm);
+            color: var(--white);
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .social-icons a:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive Design - Menu Simplificado */
+        @media (max-width: 992px) {
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            nav li {
+                margin-left: 0;
+            }
+            
+            nav a {
+                font-size: 0.95rem;
+                padding: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .logo-text .logo-kws {
+                font-size: 1.5rem;
+            }
+            
+            .logo-text .logo-kwanza {
+                font-size: 0.8rem;
+            }
+            
+            nav ul {
+                gap: 10px;
+            }
+            
+            nav a {
+                font-size: 0.9rem;
+                padding: 5px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation - Sem botão do menu -->
+    <header>
+        <div class="container header-container">
+            <a href="#inicio" class="logo">
+                <div class="logo-text">
+                    <img src="img/KWS.png" width="90" alt="logo-kws">
+                </div>
+
+                <div class="logo-text">
+                    <img src="img/KWSlogo.png" width="90" alt="logo-kws">
+                </div>
+               
+            </a>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#porque-nos">Por que Nós?</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-subtitle">- Soluções Tecnológicas em Angola -</div>
+            <h1>KWS – Soluções Tecnológicas Especializadas</h1>
+            <p>Oferecemos serviços especializados em TI com foco em resultados. Da programação à manutenção, somos sua parceira tecnológica completa.</p>
+            <div class="hero-buttons">
+                <a href="#servicos" class="btn btn-primary">
+                    <i class="fas fa-laptop-code"></i> Ver Serviços
+                </a>
+                <a href="#contacto" class="btn btn-secondary">
+                    <i class="fas fa-comments"></i> Pedir Orçamento
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section - Foco Principal -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-title">
+                <h2>NOSSOS SERVIÇOS ESPECIALIZADOS</h2>
+                <p>Soluções tecnológicas completas para empresas e particulares</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Programação - Sistemas de Gestão -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Programação e Sistemas de Gestão">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-code"></i> Programação & Sistemas de Gestão</h3>
+                        <p>Desenvolvimento de software personalizado para otimizar processos empresariais, aumentar produtividade e automatizar tarefas.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Sistemas ERP personalizados</li>
+                            <li><i class="fas fa-check"></i> Gestão de inventário e stock</li>
+                            <li><i class="fas fa-check"></i> Faturação e contabilidade</li>
+                            <li><i class="fas fa-check"></i> CRM para gestão de clientes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Desenvolvimento Mobile -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Desenvolvimento Mobile">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-mobile-alt"></i> Desenvolvimento Mobile</h3>
+                        <p>Criação de aplicativos nativos e multiplataforma para iOS e Android, desde conceito até publicação nas lojas de aplicativos.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Apps iOS e Android nativas</li>
+                            <li><i class="fas fa-check"></i> Aplicativos React Native/Flutter</li>
+                            <li><i class="fas fa-check"></i> Integração com sistemas existentes</li>
+                            <li><i class="fas fa-check"></i> Publicação nas app stores</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- CCTV - IMAGEM ATUALIZADA -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sistemas CCTV">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-video"></i> Sistemas de CCTV</h3>
+                        <p>Instalação profissional de sistemas de vigilância por vídeo para segurança residencial e empresarial com monitoramento remoto.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Câmaras IP e analógicas de alta resolução</li>
+                            <li><i class="fas fa-check"></i> Sistemas DVR/NVR com armazenamento</li>
+                            <li><i class="fas fa-check"></i> Monitoramento remoto via app mobile</li>
+                            <li><i class="fas fa-check"></i> Instalação e manutenção especializada</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Design Gráfico -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Design Gráfico">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-paint-brush"></i> Design Gráfico</h3>
+                        <p>Criação de identidades visuais, materiais promocionais e conteúdo gráfico para fortalecer sua presença digital e impressa.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Logotipos e identidade visual</li>
+                            <li><i class="fas fa-check"></i> Material promocional (flyers, cartazes)</li>
+                            <li><i class="fas fa-check"></i> Design para redes sociais</li>
+                            <li><i class="fas fa-check"></i> Apresentações profissionais</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Manutenção de PC -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Manutenção de PC">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-tools"></i> Manutenção de PC & Software</h3>
+                        <p>Reparação, optimização e manutenção preventiva de computadores para garantir máximo desempenho e longevidade.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Reparação de hardware</li>
+                            <li><i class="fas fa-check"></i> Remoção de vírus e malware</li>
+                            <li><i class="fas fa-check"></i> Otimização de sistema</li>
+                            <li><i class="fas fa-check"></i> Backups e recuperação de dados</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Redes / CCNA -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Redes de Computadores">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-network-wired"></i> Redes & CCNA</h3>
+                        <p>Configuração, administração e segurança de redes corporativas. Preparação para certificação CCNA e suporte técnico especializado.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Configuração de redes LAN/WAN</li>
+                            <li><i class="fas fa-check"></i> Roteadores e switches Cisco</li>
+                            <li><i class="fas fa-check"></i> Segurança de rede e firewalls</li>
+                            <li><i class="fas fa-check"></i> Preparação para certificação CCNA</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Criação de Documentos -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="img/doc.jpg" alt="Criação de Documentos">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-file-alt"></i> Documentos & Trabalhos</h3>
+                        <p>Desenvolvimento de documentos profissionais, trabalhos académicos, relatórios técnicos e apresentações de qualidade.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Trabalhos académicos e teses</li>
+                            <li><i class="fas fa-check"></i> Relatórios técnicos e empresariais</li>
+                            <li><i class="fas fa-check"></i> Apresentações profissionais</li>
+                            <li><i class="fas fa-check"></i> Formatação e revisão completa</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Serviços Adicionais -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Outros Serviços de TI">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-cogs"></i> Outros Serviços de TI</h3>
+                        <p>Soluções completas de tecnologia da informação para atender todas as necessidades do seu negócio ou uso pessoal.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Instalação de sistemas operativos</li>
+                            <li><i class="fas fa-check"></i> Suporte técnico remoto 24/7</li>
+                            <li><i class="fas fa-check"></i> Consultoria em TI empresarial</li>
+                            <li><i class="fas fa-check"></i> Soluções cloud e backup</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us" id="porque-nos">
+        <div class="container">
+            <div class="section-title">
+                <h2>POR QUE ESCOLHER A KWS?</h2>
+                <p>Vantagens exclusivas de trabalhar connosco</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Especialização Técnica</h3>
+                    <p>Equipa com formação especializada em diversas áreas de TI, sempre atualizada com as últimas tecnologias.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Soluções Rápidas</h3>
+                    <p>Resposta ágil e eficiente para resolver seus problemas tecnológicos no menor tempo possível.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Parceria de Confiança</h3>
+                    <p>Relações de longo prazo baseadas em transparência, qualidade e resultados mensuráveis.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Garantia Total</h3>
+                    <p>Todos os nossos serviços incluem garantia, assegurando sua satisfação e tranquilidade.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Cobertura Nacional</h3>
+                    <p>Atendemos em todo o território angolano, com suporte presencial e remoto disponível.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-comments-dollar"></i>
+                    <h3>Preços Acessíveis</h3>
+                    <p>Serviços de alta qualidade a preços competitivos, com opções para todos os orçamentos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section com imagem de fundo -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>ENTRE EM CONTACTO</h2>
+                <p>Solicite um orçamento ou esclareça suas dúvidas</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Informações de Contacto</h2>
+                    <p>Estamos disponíveis para discutir suas necessidades de TI e oferecer soluções personalizadas para o seu negócio ou uso pessoal.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Telefone/WhatsApp</h3>
+                            <a href="tel:+244947077935">+244 947 077 935</a>
+                            <p>Disponível de segunda a sábado, 8h às 20h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>E-mail</h3>
+                            <a href="mailto:lazaroupf26@gmail.com">lazarooupf26@gmail.com</a>
+                            <p>Respondemos em até 24 horas úteis</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Localização</h3>
+                            <p>Angola</p>
+                            <p>Prestação de serviços em todo o país</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-icons">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/244947077935" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2>Solicitar Orçamento</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Serviço de Interesse</label>
+                            <select id="service">
+                                <option value="">Selecione um serviço</option>
+                                <option value="programacao">Programação & Sistemas de Gestão</option>
+                                <option value="mobile">Desenvolvimento Mobile</option>
+                                <option value="cctv">Sistemas de CCTV</option>
+                                <option value="design">Design Gráfico</option>
+                                <option value="manutencao">Manutenção de PC & Software</option>
+                                <option value="redes">Redes & CCNA</option>
+                                <option value="documentos">Documentos & Trabalhos</option>
+                                <option value="outro">Outros Serviços de TI</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Descrição do Projeto</label>
+                            <textarea id="message" placeholder="Descreva o seu projeto ou necessidade..." required></textarea>
+                        </div>
+                        
+                        <div class="contact-buttons">
+                            <a href="https://wa.me/244947077935?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20Kwanza%20Systems%20(KWS)" class="btn btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="mailto:lazaroupf26@gmail.com?subject=Orçamento%20-%20KWS%20Kwanza%20Systems&body=Olá,%20gostaria%20de%20solicitar%20um%20orçamento%20para%20os%20serviços%20da%20Kwanza%20Systems%20(KWS)." class="btn btn-email">
+                                <i class="fas fa-envelope"></i> Enviar E-mail
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>KWS - Kwanza Systems</h3>
+                    <p>Soluções Tecnológicas Especializadas para o seu negócio. Da programação à manutenção, oferecemos serviços completos de TI.</p>
+                    <p><strong>Fundada em 2025 por Lázaro Laurindo José</strong></p>
+                    <p>Estudante de Informática | Empresa Angolana</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Serviços Principais</h3>
+                    <ul>
+                        <li><a href="#servicos"><i class="fas fa-arrow-right"></i> Programação & Sistemas</a></li>
+                        <li><a href="#servicos"><i class="fas fa-arrow-right"></i> Desenvolvimento Mobile</a></li>
+                        <li><a href="#servicos"><i class="fas fa-arrow-right"></i> Sistemas CCTV</a></li>
+                        <li><a href="#servicos"><i class="fas fa-arrow-right"></i> Design Gráfico</a></li>
+                        <li><a href="#servicos"><i class="fas fa-arrow-right"></i> Redes & CCNA</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio"><i class="fas fa-arrow-right"></i> Início</a></li>
+                        <li><a href="#servicos"><i class="fas fa-arrow-right"></i> Serviços</a></li>
+                        <li><a href="#porque-nos"><i class="fas fa-arrow-right"></i> Por que Nós?</a></li>
+                        <li><a href="#contacto"><i class="fas fa-arrow-right"></i> Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 KWS - Kwanza Systems. Todos os direitos reservados. Desenvolvido por Lázaro Laurindo José.</p>
+                <p style="margin-top: 8px;">Contactos: +244 947077935 | lazarooupf26@gmail.com</p>
+                <p style="margin-top: 8px; font-size: 0.85rem;">Empresa de Tecnologia da Informação | Programação | Redes | Design | CCTV | Suporte Técnico</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Show confirmation message
+            alert(`Obrigado ${name}! Seu pedido de orçamento para ${service} foi recebido com sucesso. Entraremos em contacto em breve via ${email}.`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add active class to nav items on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
